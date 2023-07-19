@@ -135,6 +135,7 @@ int mod(void *data, void **response)
 	// makeResponse(data, sizeof(data), response)
 	// 	sendResponse(data, ) // sockfd response len
 	// first find it
+	struct OptRet ret;
 	int find_stu_index = -1;
 	for (int i = 0; i < students_n; i++)
 	{
