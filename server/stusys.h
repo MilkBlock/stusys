@@ -69,8 +69,8 @@ struct StudentLoginRet
 // 操作是否成功以及相应提示的response结构体
 struct OptRet
 {
-	bool isSuccessful;
-	char[20] char_info;
+	int isSuccessful;
+	char char_info[20];
 	struct Stu stu;
 };
 

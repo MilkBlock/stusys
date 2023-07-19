@@ -51,9 +51,9 @@ int add(void *data, void **response)
 	struct OptRet ret;
 	memcpy(students + students_n, data, sizeof(struct Stu));
 
-	ret.isSuccessful = true;
+	ret.isSuccessful = 1;
 	const char *tmp = "成功 add 力";
-	strcpy(ret.char_info, tmp, strlen(tmp));
+	strcpy(ret.char_info, tmp);
 	makeResponse(&ret, sizeof(struct OptRet), response);
 }
 
@@ -62,9 +62,9 @@ int del(void *data, void **response)
 	struct OptRet ret;
 	if (students_n == 0)
 	{
-		ret.isSuccessful = false;
+		ret.isSuccessful = 0;
 		const char *tmp = "students 已经没货了";
-		strcpy(ret.char_info, tmp, strlen(tmp));
+		strcpy(ret.char_info, tmp);
 		makeResponse(&ret, sizeof(struct OptRet), response);
 		return
 		// 报错删无可删
@@ -87,9 +87,9 @@ int del(void *data, void **response)
 	}
 	students_n -= 1;
 
-	ret.isSuccessful = true;
+	ret.isSuccessful = 1;
 	const char *tmp = "students 成功减员";
-	strcpy(ret.char_info, tmp, strlen(tmp));
+	strcpy(ret.char_info, tmp);
 	makeResponse(&ret, sizeof(struct OptRet), response);
 }
 
@@ -108,16 +108,16 @@ int find(void *data, void **response)
 	// if not found
 	if (find_stu_index == -1)
 	{
-		ret.isSuccessful = false;
+		ret.isSuccessful = 0;
 		const char *tmp = "诶，没找到";
-		strcpy(ret.char_info, tmp, strlen(tmp));
+		strcpy(ret.char_info, tmp);
 		makeResponse(&ret, sizeof(struct OptRet), response);
 	} // if found it
 	else
 	{
-		ret.isSuccessful = true;
+		ret.isSuccessful = 1;
 		const char *tmp = "我擦，找到了";
-		strcpy(ret.char_info, tmp, strlen(tmp));
+		strcpy(ret.char_info, tmp);
 
 		memcpy(&ret.stu, &students[find_stu_index], sizeof(struct Stu)); // 取成员运算是最高优先级 比 & 优先了
 
@@ -146,9 +146,9 @@ int mod(void *data, void **response)
 	}
 	if (find_stu_index == -1)
 	{
-		ret.isSuccessful = false;
+		ret.isSuccessful = 0;
 		const char *tmp = "诶，没找到，这没法改啊";
-		strcpy(ret.char_info, tmp, strlen(tmp));
+		strcpy(ret.char_info, tmp);
 		makeResponse(&ret, sizeof(struct OptRet), response);
 	}
 	else

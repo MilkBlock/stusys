@@ -61,8 +61,8 @@ struct StudentLoginRet
 };
 struct OptRet
 {
-	bool isSuccessful;
-	char[20] char_info;
+	int isSuccessful;
+	char char_info[20];
 	struct Stu stu;
 };
 #endif //_STU_SYS_H__
