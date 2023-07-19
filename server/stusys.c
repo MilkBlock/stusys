@@ -55,6 +55,7 @@ int add(void *data, void **response)
 	const char *tmp = "成功 add 力";
 	strcpy(ret.char_info, tmp);
 	makeResponse(&ret, sizeof(struct OptRet), response);
+	return sizeof(struct OptRet);
 }
 
 int del(void *data, void **response)
@@ -66,7 +67,7 @@ int del(void *data, void **response)
 		const char *tmp = "students 已经没货了";
 		strcpy(ret.char_info, tmp);
 		makeResponse(&ret, sizeof(struct OptRet), response);
-		return
+		return sizeof(struct OptRet);
 		// 报错删无可删
 	}
 	// first find it
@@ -91,6 +92,7 @@ int del(void *data, void **response)
 	const char *tmp = "students 成功减员";
 	strcpy(ret.char_info, tmp);
 	makeResponse(&ret, sizeof(struct OptRet), response);
+	return sizeof(struct OptRet);
 }
 
 int find(void *data, void **response)
@@ -123,11 +125,13 @@ int find(void *data, void **response)
 
 		makeResponse(&ret, sizeof(struct OptRet), response);
 	}
+	return sizeof(struct OptRet);
 }
 
 int list(void *data, void **response)
 {
 	makeResponse(students, sizeof(struct Stu) * students_n, response);
+	return sizeof(struct Stu) * students_n;
 }
 
 int mod(void *data, void **response)
@@ -151,10 +155,12 @@ int mod(void *data, void **response)
 		const char *tmp = "诶，没找到，这没法改啊";
 		strcpy(ret.char_info, tmp);
 		makeResponse(&ret, sizeof(struct OptRet), response);
+		return sizeof(struct OptRet);
 	}
 	else
 	{
 		memcpy(&students[find_stu_index], &ret.stu, sizeof(struct Stu)); // 取成员运算是最高优先级 比 & 优先了
 		makeResponse(&ret, sizeof(struct OptRet) + (students_n - 1) * sizeof(struct Stu), response);
+		return sizeof(struct OptRet) + (students_n - 1) * sizeof(struct Stu);
 	}
 }
