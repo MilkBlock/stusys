@@ -48,7 +48,7 @@ int acceptClient(int sockfd)
 {
 	struct sockaddr_in addr = {};
 	socklen_t len = sizeof(addr);
-	int cfd = accept(sockfd, (struct sockaddr *)&addr, &len);
+	int cfd = accept(sockfd, (struct sockaddr *)&addr, &len); // 在这里服务器有一次拒绝连接的机会
 	if (cfd == -1)
 	{
 		LOG("accept:%s\n", strerror(errno));

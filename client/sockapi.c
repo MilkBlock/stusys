@@ -28,9 +28,9 @@ int connectServer(const char *ip, unsigned short port)
 	}
 	return sockfd;
 }
-
+// 这个size 是专指 request 的 size
 int sendRequest(int sockfd, int dowhat, void *request, size_t size)
-{ // 这个size 是专指 request 的 size
+{
 	int s = size + 4 + 4;
 	send(sockfd, &s, sizeof(int), 0);
 	send(sockfd, &dowhat, sizeof(int), 0);
@@ -38,6 +38,7 @@ int sendRequest(int sockfd, int dowhat, void *request, size_t size)
 	return 0;
 }
 
+// 好纯
 int recvResponse(int sockfd, void *response, size_t size)
 {
 	int s = 0;

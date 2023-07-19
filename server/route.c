@@ -15,7 +15,7 @@ struct Route routes[] = {
 	{MOD, mod},
 	{FIND, find},
 	{LIST, list}};
-
+// 返回size
 int routeEntry(void *request, void **response)
 {
 	// request 前面4byte 要干什么
@@ -26,7 +26,7 @@ int routeEntry(void *request, void **response)
 	{
 		if (routes[i].dowhat == dowhat)
 		{
-			return routes[i].func(request + sizeof(dowhat), response);
+			return routes[i].func(request + sizeof(dowhat), response); // 注意这里传入是的不包含size的request   需要我们补充 response
 		}
 	}
 	return -1;
