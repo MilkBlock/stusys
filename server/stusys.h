@@ -60,11 +60,18 @@ struct ManagerLoginRet
 {
 	int stat; // SUCCESS FAILURE     应该是作为返回的response
 };
-
 struct StudentLoginRet
 {
 	int stat;
 	struct Stu stu; // 顺带返回一些学生的基础信息？
+};
+
+// 操作是否成功以及相应提示的response结构体
+struct OptRet
+{
+	bool isSuccessful;
+	char[20] char_info;
+	struct Stu stu;
 };
 
 #endif //_STU_SYS_H__
