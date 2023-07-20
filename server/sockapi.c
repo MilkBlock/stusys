@@ -25,6 +25,7 @@ int initServer(const char *ip, unsigned short port)
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(port);
 	addr.sin_addr.s_addr = inet_addr(ip);
+	printf("init Server   address any if 0.0.0.0");
 
 	// setsockopt
 	int ret = 0;
