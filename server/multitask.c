@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <pthread.h>
 #include "multitask.h"
 #include "sockapi.h" //recvRequet   sendResponse
 #include "route.h"	 //routeEntry
