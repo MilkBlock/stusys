@@ -49,12 +49,8 @@ int students_n; // 最开始只有张三一个学生
 void initStus()
 {
 	printf("init Students array add 张三 ");
-	students[0].age = 20;
-	students[0].name = "张三";
-	students[0].no = 20230001;
-	students[0].sex = "男";
-	students[0].passwd = "123456";
-	students[0].score = {90, 91, 99};
+	Stu tmpStu = {20230001, "张三", "男", 18, {90, 91, 99}, "123456"};
+	students[0] = tmpStu;
 	students_n = 1;
 };
 int add(void *data, void **response)
@@ -85,7 +81,7 @@ int del(void *data, void **response)
 	int find_stu_index;
 	for (int i = 0; i < students_n; i++)
 	{
-		if (students[i].no == ((*Stu)(data)).no)
+		if (students[i].no == (*(*Stu)(data)).no)
 		{
 			find_stu_index = i;
 			break;
@@ -95,7 +91,7 @@ int del(void *data, void **response)
 	// 删除之后移位
 	for (int i = find_stu_index + 1; i < students_n; i++)
 	{
-		memcpy(students + i - 1, students + i, sizof(struct Stu));
+		memcpy(students + i - 1, students + i, sizeof(struct Stu));
 	}
 	students_n -= 1;
 
@@ -112,7 +108,7 @@ int find(void *data, void **response)
 	int find_stu_index = -1;
 	for (int i = 0; i < students_n; i++)
 	{
-		if (students[i].no == ((*Stu)(data)).no)
+		if (students[i].no == (*(*Stu)(data)).no)
 		{
 			find_stu_index = i;
 			break;
@@ -154,7 +150,7 @@ int mod(void *data, void **response)
 	int find_stu_index = -1;
 	for (int i = 0; i < students_n; i++)
 	{
-		if (students[i].no == ((*Stu)(data)).no)
+		if (students[i].no == (*(*Stu)(data)).no)
 		{
 			find_stu_index = i;
 			break;
