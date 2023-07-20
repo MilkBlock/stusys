@@ -81,7 +81,7 @@ int del(void *data, void **response)
 	int find_stu_index;
 	for (int i = 0; i < students_n; i++)
 	{
-		if (students[i].no == (*(Stu *)(data)).no)
+		if (students[i].no == (*(struct Stu *)(data)).no)
 		{
 			find_stu_index = i;
 			break;
@@ -108,7 +108,7 @@ int find(void *data, void **response)
 	int find_stu_index = -1;
 	for (int i = 0; i < students_n; i++)
 	{
-		if (students[i].no == (*(Stu *)(data)).no)
+		if (students[i].no == (*(struct Stu *)(data)).no)
 		{
 			find_stu_index = i;
 			break;
@@ -150,7 +150,7 @@ int mod(void *data, void **response)
 	int find_stu_index = -1;
 	for (int i = 0; i < students_n; i++)
 	{
-		if (students[i].no == (*(Stu *)(data)).no)
+		if (students[i].no == (*(struct Stu *)(data)).no)
 		{
 			find_stu_index = i;
 			break;
