@@ -22,6 +22,7 @@ void serverRun(const char *ip, unsigned short port)
 	}
 
 	// 初始化学生数组
+	printf("init");
 	initStus();
 
 	// 2.循环等待客户端连接
