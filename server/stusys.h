@@ -39,6 +39,8 @@ int find(void *data, void **response);
 int list(void *data, void **response);
 int mod(void *data, void **response);
 
+void initStus();
+
 struct Stu
 { // 学生properties 真多啊，挺能爆金币的吧
 	int no;

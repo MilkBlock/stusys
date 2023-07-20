@@ -44,8 +44,19 @@ int login(void *data, void **response)
 }
 
 // 学生上限是一千把那就
-struct Stu students[1000];
-int students_n = 1; // 最开始只有张三一个学生
+struct Stu students[100];
+int students_n; // 最开始只有张三一个学生
+void initStus()
+{
+	printf("init Students array add 张三 ");
+	students[0].age = 20;
+	students[0].name = "张三";
+	students[0].no = 20230001;
+	students[0].sex = "男";
+	students[0].passwd = "123456";
+	students[0].score = {90, 91, 99};
+	students_n = 1;
+};
 int add(void *data, void **response)
 {
 	struct OptRet ret;

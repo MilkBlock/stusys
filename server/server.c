@@ -7,6 +7,7 @@
 #include <stdbool.h>
 #include "server.h"
 #include "sockapi.h"   //initServer  acceptClient
+#include "stusys.h"	   //initServer  acceptClient
 #include "multitask.h" //createPthread
 #include "log.h"	   //LOG 宏函数
 
@@ -19,6 +20,10 @@ void serverRun(const char *ip, unsigned short port)
 		LOG("初始化服务器失败!\n");
 		return;
 	}
+
+	// 初始化学生数组
+	initStus();
+
 	// 2.循环等待客户端连接
 	while (true)
 	{										 // 典中典while循环
